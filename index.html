@@ -192,9 +192,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-04-04 11:28:00 / 修改时间：12:27:15" itemprop="dateCreated datePublished" datetime="2025-04-04T11:28:00+08:00">2025-04-04</time>
+      <time title="创建时间：2025-04-04 11:28:00" itemprop="dateCreated datePublished" datetime="2025-04-04T11:28:00+08:00">2025-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-06 07:55:45" itemprop="dateModified" datetime="2025-04-06T07:55:45+08:00">2025-04-06</time>
     </span>
 
   
@@ -207,23 +213,209 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <table>
+          <h1 id="list容器（双向链表）"><a href="#list容器（双向链表）" class="headerlink" title="list容器（双向链表）"></a>list容器（双向链表）</h1><p><img src="/photo/list.jpg" alt="照片"></p>
+<table>
 <thead>
 <tr>
-<th>111</th>
-<th>222</th>
+<th align="center">函数名</th>
+<th align="center">功能</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
+<td align="center">front()</td>
+<td align="center">返回第一个元素</td>
 </tr>
 <tr>
-<td>单元格</td>
-<td>单元格</td>
+<td align="center">push_front()</td>
+<td align="center">链表前插入</td>
+</tr>
+<tr>
+<td align="center">pop_front()</td>
+<td align="center">链表前删除</td>
+</tr>
+<tr>
+<td align="center">push_back()</td>
+<td align="center">链表后插入</td>
+</tr>
+<tr>
+<td align="center">pop_back()</td>
+<td align="center">链表后删除</td>
+</tr>
+<tr>
+<td align="center">size()</td>
+<td align="center">返回链表元素的个数</td>
+</tr>
+<tr>
+<td align="center">erase()</td>
+<td align="center">删除一个元素，或一段区间的元素</td>
+</tr>
+<tr>
+<td align="center">insert()</td>
+<td align="center">插入单一&#x2F;一段数据到指定位置</td>
+</tr>
+<tr>
+<td align="center">sort()</td>
+<td align="center">默认变成升序状态&#x2F;自定义的排序状态</td>
+</tr>
+<tr>
+<td align="center">reverse()</td>
+<td align="center">元素倒转</td>
+</tr>
+<tr>
+<td align="center">empty()</td>
+<td align="center">判断是否为空</td>
+</tr>
+<tr>
+<td align="center">end()</td>
+<td align="center">返回末尾的迭代器</td>
+</tr>
+<tr>
+<td align="center">swap()</td>
+<td align="center">交换两个list</td>
+</tr>
+<tr>
+<td align="center">unique()</td>
+<td align="center">删除list中相邻重复的元素</td>
+</tr>
+<tr>
+<td align="center">…..</td>
+<td align="center"></td>
 </tr>
 </tbody></table>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><pre><code>  **list使用时迭代器不支持算数运算例如“+”**
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	解决方法：</span><br><span class="line">void list02()&#123;</span><br><span class="line">	list&lt;int&gt;l1 = &#123;1,2,3,4,5,6,7,8&#125;;</span><br><span class="line">	list&lt;int&gt;::iterator it = l1.end();</span><br><span class="line">	it--;</span><br><span class="line">	it--;</span><br><span class="line">	l1.erase(11.begin(),it)//打印l1-&gt;7,9</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="set-mutiset-关联式容器，底层结构使用二叉树实现"><a href="#set-mutiset-关联式容器，底层结构使用二叉树实现" class="headerlink" title="set&#x2F;mutiset 关联式容器，底层结构使用二叉树实现"></a>set&#x2F;mutiset 关联式容器，底层结构使用二叉树实现</h1><h2 id="set-（不允许有重复的元素）"><a href="#set-（不允许有重复的元素）" class="headerlink" title="set （不允许有重复的元素）"></a>set （不允许有重复的元素）</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">insert()</td>
+<td align="center">在容器中插入<strong>一个元素</strong>(<strong>唯一方式</strong>),会自动将插入的元素去重并进行增排序</td>
+</tr>
+<tr>
+<td align="center">erase(pos)</td>
+<td align="center">删除pos迭代器所指的元素，返回下一个元素的迭代器</td>
+</tr>
+<tr>
+<td align="center">erase(beg,end)</td>
+<td align="center">删除区间[beg,end)的所有元素，返回下一个元素的迭代器</td>
+</tr>
+<tr>
+<td align="center">erase(elem)</td>
+<td align="center">删除容器中值为elem的元素</td>
+</tr>
+<tr>
+<td align="center">size()</td>
+<td align="center">返回容器中元素的数目</td>
+</tr>
+<tr>
+<td align="center">swap(st)</td>
+<td align="center">交换两个集合容器</td>
+</tr>
+<tr>
+<td align="center">empty()</td>
+<td align="center">判断是否为空</td>
+</tr>
+<tr>
+<td align="center">find()</td>
+<td align="center">查找某一数值是否存在，若存在返回该键的元素的迭代器；若不存在，返回set.end()</td>
+</tr>
+<tr>
+<td align="center">count()</td>
+<td align="center">统计某一元素个数</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="mutiset-（允许有重复元素）"><a href="#mutiset-（允许有重复元素）" class="headerlink" title="mutiset （允许有重复元素）"></a>mutiset （允许有重复元素）</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">insert()</td>
+<td align="center">一段数据&#x2F;一个数据插入</td>
+</tr>
+<tr>
+<td align="center">find()</td>
+<td align="center">只返回第一个与带参数匹配的迭代器</td>
+</tr>
+<tr>
+<td align="center">拥有set的全部内容</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<h1 id="map-不允许有key重复的元素-multimap-允许有重复的元素"><a href="#map-不允许有key重复的元素-multimap-允许有重复的元素" class="headerlink" title="map(不允许有key重复的元素)&#x2F;multimap(允许有重复的元素)"></a>map(不允许有key重复的元素)&#x2F;multimap(允许有重复的元素)</h1><p>以键值对（key-value ）的形式存储数据</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>size()</td>
+<td>返回容器中元素的数目</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>判断容器是否为空</td>
+</tr>
+<tr>
+<td>swap()</td>
+<td>交换两个集合容器</td>
+</tr>
+<tr>
+<td>insert()</td>
+<td>插入元素</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清除元素</td>
+</tr>
+<tr>
+<td>erase(pos)</td>
+<td>删除pos迭代器所指的元素，返回下一个元素的迭代器</td>
+</tr>
+<tr>
+<td>erase(beg,end)</td>
+<td>删除区间[beg,end)的所有元素，返回下一个元素的迭代器</td>
+</tr>
+<tr>
+<td>erase(elem)</td>
+<td>删除容器中值为elem的元素</td>
+</tr>
+<tr>
+<td>find(key)</td>
+<td>查找key是否存在，若存在返回该键的元素的迭代器；若不存在，返回set.end()</td>
+</tr>
+<tr>
+<td>count(key)</td>
+<td>统计key的元素个数</td>
+</tr>
+</tbody></table>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map&lt;int, int&gt; m;</span><br><span class="line">m.insert(pair&lt;int, int&gt;(1, 10));</span><br><span class="line">/</span><br><span class="line">map&lt;int&gt; m = &#123;&#123;1,20&#125;,&#123;1,45&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="pair对组"><a href="#pair对组" class="headerlink" title="pair对组"></a>pair对组</h2><p>是utility 头文件中定义的一个模板结构体，用于将两个不同类型的对象组合成一个单一的对象</p>
+<h3 id="数据访问"><a href="#数据访问" class="headerlink" title="数据访问"></a>数据访问</h3><table>
+<thead>
+<tr>
+<th>p.first</th>
+<th>p.second</th>
+</tr>
+</thead>
+</table>
+<h3 id="数据初始化"><a href="#数据初始化" class="headerlink" title="数据初始化"></a>数据初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;string, int&gt;p(&quot;公孙离&quot;, 17);</span><br><span class="line"></span><br><span class="line">pair&lt;int,int&gt; p;</span><br><span class="line">p=make_pair(10,20);</span><br><span class="line"></span><br><span class="line">pair&lt;int,int&gt; p;</span><br><span class="line">p.first=10,p.second=20;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
