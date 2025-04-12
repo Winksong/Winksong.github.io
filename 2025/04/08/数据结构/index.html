@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）删除操作讨论度的情况 度为0: 直接删度为1：直接删，再把度为1的子节点替换度为2：（为了保持删除后保持中序遍历为有序的）转移矛盾，把度为2的节点转化为前驱或后继节点，这些节点必定度为0或1，此时再删去前驱或后继找前驱和后继的方法：左子树的极大值，右子树的极小值	 1  二叉平衡树  &#x2F;&#x2F;对递归操作不熟练，代码还未实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="http://example.com/2025/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Winksong&#39;s Blog">
+<meta property="og:description" content="BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）删除操作讨论度的情况 度为0: 直接删度为1：直接删，再把度为1的子节点替换度为2：（为了保持删除后保持中序遍历为有序的）转移矛盾，把度为2的节点转化为前驱或后继节点，这些节点必定度为0或1，此时再删去前驱或后继找前驱和后继的方法：左子树的极大值，右子树的极小值	 1  二叉平衡树  &#x2F;&#x2F;对递归操作不熟练，代码还未实">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/photo/%E5%B9%B6%E6%9F%A5%E9%9B%86.jpg">
+<meta property="og:image" content="http://example.com/photo/%E5%B9%B6%E6%9F%A5%E9%9B%862.jpg">
+<meta property="article:published_time" content="2025-04-08T07:34:20.000Z">
+<meta property="article:modified_time" content="2025-04-12T08:08:51.271Z">
+<meta property="article:author" content="Winksong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/photo/%E5%B9%B6%E6%9F%A5%E9%9B%86.jpg">
+
+
+<link rel="canonical" href="http://example.com/2025/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","path":"2025/04/08/数据结构/","title":"数据结构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构 | Winksong's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Winksong's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BST-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%88%E5%8F%AA%E8%A6%81%E6%B1%82%E5%B7%A6%E5%B0%8F%E5%8F%B3%E5%A4%A7%EF%BC%89%EF%BC%88%E5%AD%A6%E4%B9%A0%E8%A6%81%E6%B1%82%EF%BC%8C%E5%B7%A5%E7%A8%8B%E4%B8%8A%E4%B8%8D%E4%BC%9A%E7%94%A8%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">删除操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E5%B9%B3%E8%A1%A1%E6%A0%91-%E5%AF%B9%E9%80%92%E5%BD%92%E6%93%8D%E4%BD%9C%E4%B8%8D%E7%86%9F%E7%BB%83%EF%BC%8C%E4%BB%A3%E7%A0%81%E8%BF%98%E6%9C%AA%E5%AE%9E%E6%93%8D"><span class="nav-number">2.</span> <span class="nav-text">二叉平衡树  &#x2F;&#x2F;对递归操作不熟练，代码还未实操</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86-%E4%B8%8D%E5%AD%98%E5%85%83%E7%B4%A0%E5%AD%98%E7%B4%A2%E5%BC%95-%E4%BB%A3%E7%A0%81%E8%BF%98%E6%B2%A1%E5%AE%9E%E6%93%8D"><span class="nav-number">3.</span> <span class="nav-text">并查集(不存元素存索引)     &#x2F;&#x2F;代码还没实操</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="nav-number">4.</span> <span class="nav-text">哈夫曼树</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Winksong"
+      src="/images/111.gif">
+  <p class="site-author-name" itemprop="name">Winksong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/111.gif">
+      <meta itemprop="name" content="Winksong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winksong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构 | Winksong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-08 15:34:20" itemprop="dateCreated datePublished" datetime="2025-04-08T15:34:20+08:00">2025-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-12 16:08:51" itemprop="dateModified" datetime="2025-04-12T16:08:51+08:00">2025-04-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="BST-二叉搜索树（只要求左小右大）（学习要求，工程上不会用）"><a href="#BST-二叉搜索树（只要求左小右大）（学习要求，工程上不会用）" class="headerlink" title="BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）"></a>BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）</h1><h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><p><strong>讨论度的情况</strong></p>
+<p>度为0: 直接删<br>度为1：直接删，再把度为1的子节点替换<br>度为2：（为了保持删除后保持中序遍历为有序的）转移矛盾，把度为2的节点转化为前驱或后继节点，这些节点必定度为0或1，此时再删去前驱或后继<br>找前驱和后继的方法：左子树的极大值，右子树的极小值	</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="二叉平衡树-对递归操作不熟练，代码还未实操"><a href="#二叉平衡树-对递归操作不熟练，代码还未实操" class="headerlink" title="二叉平衡树  &#x2F;&#x2F;对递归操作不熟练，代码还未实操"></a>二叉平衡树  &#x2F;&#x2F;对递归操作不熟练，代码还未实操</h1><p>高度为完全二叉树的高度（最优查找树），但插入再旋转效率极低（动态性差）<br>平衡因子：|左子树的高度-右子树的高度|<br>失衡：平衡因子&gt;1<br>判断失衡类型：LL，LR，RL，RR<br>AVL插入：先按BST进行插入再判断失衡类型，进行旋转<br>树的旋转（方法不唯一）：<br>AVL删除：按BST树的删除+平衡调整<br>       删除节点后，他的子节点的高度不会变，不会失衡<br>       归的过程，左右可能出现失衡，进行调整<br>        1.失衡判断<br>        2.左边重还是右边重</p>
+<h1 id="并查集-不存元素存索引-代码还没实操"><a href="#并查集-不存元素存索引-代码还没实操" class="headerlink" title="并查集(不存元素存索引)     &#x2F;&#x2F;代码还没实操"></a>并查集(不存元素存索引)     &#x2F;&#x2F;代码还没实操</h1><p>核心操作：合并，查询是否关联<br>find() union()<br>实现思路：<br>Quick Find（顺序结构）<br>查找效率：O（1）<br>合并效率：O（N）<br><strong>核心</strong>:是将所有元素进行 ID 分组管理，每个元素对应一个 ID 号<br>find 的时候，只需要返回这个元素对应的分组 ID<br>合并的时候 Union (a,b) 时候，将属于 a 分组的元素，都改为 b 分组的 ID 号<br><img src="/photo/%E5%B9%B6%E6%9F%A5%E9%9B%86.jpg" alt="照片"></p>
+<p>Quick Union（树状结构）<br>查找效率：O（logN）<br>合并效率：O（logN）<br><strong>核心</strong>:将集合分为<em>根结点</em>和<em>父节点</em>的思想，所有节点保存他的父节点信息，当发现某个节点的父节点就是他自己的时候，这个节点就是根结点<br>find 操作就是找到这个元素的根结点，判断两个元素的根结点是不是一致，来判断是否连通。<br>合并操作的时候，Union (a,b) 的时候，不是合并 a 和 b，而是将 a 的根结点和 b 的根结点进行合并<br><img src="/photo/%E5%B9%B6%E6%9F%A5%E9%9B%862.jpg" alt="照片"></p>
+<p>代码优化效率：<br>基于size算法的优化：再申请一个空间，如果当前索引是根节点，就改存储为这颗树的节点总数，后续要union则小数往大数靠<br>基于rank算法的优化</p>
+<h1 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h1><p>！<a href="photo/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91.jpg">照片</a></p>
+<p>最小权值之和的树<br>有效数据都在叶节点<br>n个元素 &#x3D;&#x3D; n个叶节点<br>m总节点数  &#x3D;&#x3D; 2n - 1</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/04/STL/" rel="prev" title="STL">
+                  <i class="fa fa-angle-left"></i> STL
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/11/%E5%A4%9A%E6%80%81%E7%BB%A7%E6%89%BF/" rel="next" title="多态继承">
+                  多态继承 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Winksong</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
