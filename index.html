@@ -137,7 +137,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -155,6 +155,76 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/111.gif">
+      <meta itemprop="name" content="Winksong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Winksong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Winksong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-04-14 19:27:38 / 修改时间：20:50:35" itemprop="dateCreated datePublished" datetime="2025-04-14T19:27:38+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>使用到的工具：StarUML</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -352,7 +422,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-12 16:08:51" itemprop="dateModified" datetime="2025-04-12T16:08:51+08:00">2025-04-12</time>
+      <time title="修改时间：2025-04-16 13:29:27" itemprop="dateModified" datetime="2025-04-16T13:29:27+08:00">2025-04-16</time>
     </span>
 
   
@@ -365,7 +435,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="BST-二叉搜索树（只要求左小右大）（学习要求，工程上不会用）"><a href="#BST-二叉搜索树（只要求左小右大）（学习要求，工程上不会用）" class="headerlink" title="BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）"></a>BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）</h1><h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><p><strong>讨论度的情况</strong></p>
+          <h1 id="顺序表（代码已实践）"><a href="#顺序表（代码已实践）" class="headerlink" title="顺序表（代码已实践）"></a>顺序表（代码已实践）</h1><p>对任意位置进行插入,删除操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">搬移数据为新数据腾出空间，从后往前挪动---data[i+1]=data[i];</span><br><span class="line">	for(int i=table-&gt;pos-1;i&gt;=index;i--)&#123;</span><br><span class="line">		table-&gt;data[i+1]=table-&gt;data[i];</span><br><span class="line">	&#125;</span><br><span class="line">删除掉元素再从后往前覆盖  ----data[i-1]=data[i];	</span><br><span class="line">	for(int i = index+1;i&lt;table-&gt;pos;++i)&#123;</span><br><span class="line">		table-&gt;data[i-1]=table-&gt;data[i];</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="链表（带头节点的已实践）"><a href="#链表（带头节点的已实践）" class="headerlink" title="链表（带头节点的已实践）"></a>链表（带头节点的已实践）</h1><p>带头指针的链表操作–要增加一个dummy的伪节点<br>删除—双指针法(备份)<br>插入—前置节点</p>
+<h1 id="BST-二叉搜索树（只要求左小右大）（学习要求，工程上不会用）"><a href="#BST-二叉搜索树（只要求左小右大）（学习要求，工程上不会用）" class="headerlink" title="BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）"></a>BST 二叉搜索树（只要求左小右大）（学习要求，工程上不会用）</h1><h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><p><strong>讨论度的情况</strong></p>
 <p>度为0: 直接删<br>度为1：直接删，再把度为1的子节点替换<br>度为2：（为了保持删除后保持中序遍历为有序的）转移矛盾，把度为2的节点转化为前驱或后继节点，这些节点必定度为0或1，此时再删去前驱或后继<br>找前驱和后继的方法：左子树的极大值，右子树的极小值	</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -373,7 +446,7 @@
 <h1 id="并查集-不存元素存索引-代码还没实操"><a href="#并查集-不存元素存索引-代码还没实操" class="headerlink" title="并查集(不存元素存索引)     &#x2F;&#x2F;代码还没实操"></a>并查集(不存元素存索引)     &#x2F;&#x2F;代码还没实操</h1><p>核心操作：合并，查询是否关联<br>find() union()<br>实现思路：<br>Quick Find（顺序结构）<br>查找效率：O（1）<br>合并效率：O（N）<br><strong>核心</strong>:是将所有元素进行 ID 分组管理，每个元素对应一个 ID 号<br>find 的时候，只需要返回这个元素对应的分组 ID<br>合并的时候 Union (a,b) 时候，将属于 a 分组的元素，都改为 b 分组的 ID 号<br><img src="/photo/%E5%B9%B6%E6%9F%A5%E9%9B%86.jpg" alt="照片"></p>
 <p>Quick Union（树状结构）<br>查找效率：O（logN）<br>合并效率：O（logN）<br><strong>核心</strong>:将集合分为<em>根结点</em>和<em>父节点</em>的思想，所有节点保存他的父节点信息，当发现某个节点的父节点就是他自己的时候，这个节点就是根结点<br>find 操作就是找到这个元素的根结点，判断两个元素的根结点是不是一致，来判断是否连通。<br>合并操作的时候，Union (a,b) 的时候，不是合并 a 和 b，而是将 a 的根结点和 b 的根结点进行合并<br><img src="/photo/%E5%B9%B6%E6%9F%A5%E9%9B%862.jpg" alt="照片"></p>
 <p>代码优化效率：<br>基于size算法的优化：再申请一个空间，如果当前索引是根节点，就改存储为这颗树的节点总数，后续要union则小数往大数靠<br>基于rank算法的优化</p>
-<h1 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h1><p>！<a href="photo/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91.jpg">照片</a></p>
+<h1 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h1><p><img src="/photo/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91.jpg" alt="照片"></p>
 <p>最小权值之和的树<br>有效数据都在叶节点<br>n个元素 &#x3D;&#x3D; n个叶节点<br>m总节点数  &#x3D;&#x3D; 2n - 1</p>
 
       
@@ -437,7 +510,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-07 20:47:51" itemprop="dateModified" datetime="2025-04-07T20:47:51+08:00">2025-04-07</time>
+      <time title="修改时间：2025-04-14 19:24:45" itemprop="dateModified" datetime="2025-04-14T19:24:45+08:00">2025-04-14</time>
     </span>
 
   
@@ -640,7 +713,7 @@
 <td>统计key的元素个数</td>
 </tr>
 </tbody></table>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map&lt;int, int&gt; m;</span><br><span class="line">m.insert(pair&lt;int, int&gt;(1, 10));</span><br><span class="line">/</span><br><span class="line">map&lt;int&gt; m = &#123;&#123;1,20&#125;,&#123;1,45&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map&lt;int, int&gt; m;</span><br><span class="line">m.insert(pair&lt;int, int&gt;(1, 10));</span><br><span class="line"></span><br><span class="line">map&lt;int&gt; m = &#123;&#123;1,20&#125;,&#123;1,45&#125;&#125;;</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="pair对组"><a href="#pair对组" class="headerlink" title="pair对组"></a>pair对组</h2><p>是utility 头文件中定义的一个模板结构体，用于将两个不同类型的对象组合成一个单一的对象</p>
@@ -704,7 +777,68 @@
 <td>判断是否是升序，否返回false是返回true</td>
 <td>is_sorted(iterator beg, iterator end);用rbeg，rend判断是否降序</td>
 </tr>
+<tr>
+<td>random_shuffle</td>
+<td>指定范围内的元素随机调整次序</td>
+<td>random_shuffle(iterator beg,iterator end);</td>
+</tr>
+<tr>
+<td>merge</td>
+<td>合并两个有序容器到另一个容器里</td>
+<td>merge(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator dest);</td>
+</tr>
+<tr>
+<td>reverse</td>
+<td>倒序容器的元素</td>
+<td>reverse(iterator beg,iterator end);</td>
+</tr>
+<tr>
+<td><img src="/photo/reverse.jpg" alt="照片"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="/photo/merge.jpg" alt="照片"></td>
+<td></td>
+<td></td>
+</tr>
 </tbody></table>
+<h1 id="拷贝和替换算法"><a href="#拷贝和替换算法" class="headerlink" title="拷贝和替换算法"></a>拷贝和替换算法</h1><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+<th>原型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>copy</td>
+<td>指定范围内的元素拷贝到另一个</td>
+<td>copy(iterator beg, iterator end, iterator dest);</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>将容器内指定范围的旧元素替换为新元素</td>
+<td>replace(iterator beg, iterator end, oldvalue, newvalue);</td>
+</tr>
+<tr>
+<td>swap</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>replace_if</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td><img src="/photo/replace_if.jpg" alt="照片"></td>
+<td><img src="/photo/copy.jpg" alt="照片"></td>
+<td><img src="/photo/replace.jpg" alt="照片"></td>
+</tr>
+</tbody></table>
+<h1 id="算术生成算法（属于小型算法）-include"><a href="#算术生成算法（属于小型算法）-include" class="headerlink" title="算术生成算法（属于小型算法）#include"></a>算术生成算法（属于小型算法）#include<numeric></h1><p>accumulate 计算容器元素累计总和<br><img src="/photo/accumulate.jpg" alt="照片"><br>fill 向容器中添加元素<br><img src="/photo%5Cfill.jpg" alt="照片"></p>
+<h1 id="集合算法"><a href="#集合算法" class="headerlink" title="集合算法"></a>集合算法</h1><p>set_intersection 求两个容器的交集<br><img src="/photo%5Cset_intersection.jpg" alt="照片"><br>set_union &#x2F;&#x2F;求两个容器的并集<br><img src="/photo%5Cset.union.jpg" alt="照片"><br>set_difference &#x2F;&#x2F;求两个容器的差集<br><img src="/photo%5Cset_difference.jpg" alt="照片"></p>
 
       
     </div>
