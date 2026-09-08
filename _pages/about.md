@@ -1,3 +1,11 @@
+permalink: /
+title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+author_profile: true
+redirect_from: 
+  - /about/
+  - /about.html
+---
+
 # Hi there 👋
 
 我是一名**计算机专业 24 级本科生**，正在不断夯实基础、积累实战的路上。
