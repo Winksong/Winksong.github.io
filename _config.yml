@@ -26,11 +26,11 @@ author:
   avatar           : "profile.png"
   name             : "Winksong"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
-  uri              : # URL
-  email            : "none@example.org" 
+  bio              : "Time will tell"
+  #location         : "Earth"
+  #employer         : "Red Brick University"
+  #uri              : # URL
+  #email            : "none@example.org" 
 
   # Academic websites
   academia         : # URL
